@@ -822,7 +822,7 @@ After completing this lab, survivors will be able to upload files into Box and s
 
 1\. [Sign-up for a Box Developer Account](https://app.box.com/signup/o/default_developer_offer). If you already have a Box account, Log in.
 
-2\. [Create Your Application](https://cloud.app.box.com/developers/services/edit/) on the Box app and be sure enter a value for redirect_uri such as "http://localhost" (not used but required) and to select "Server Authentication (OAuth2.0 with JWT)" in the **Authentication Type** field. 
+2\. [Create Your Application](https://cloud.app.box.com/developers/services/edit/) on the Box app and be sure enter a value for redirect_uri such as "http://localhost" (not used but required) and to select "Server Authentication (OAuth2.0 with JWT)" in the **Authentication Type** field. Please follow the step-by-step instructions are available on the [Box Platform Configuration](https://docs.box.com/v2.0/docs/configuring-box-platform) page.
 
 **We will need to generate an RSA Keypair as follows:**
 2a\. Generate a private key. You will be prompted for a password, use anything you want, such as "1234".
