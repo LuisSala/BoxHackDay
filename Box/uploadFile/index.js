@@ -59,11 +59,11 @@ function requestToken(sub, boxSubType) {
         header: {
             "alg": "RS256",
             "typ": "JWT",
-            "kid": API_KEY
+            "kid": PUBLIC_KEY_ID
         }
     };
     var tokenData = {
-        "iss": PUBLIC_KEY_ID,
+        "iss": CLIENT_ID,
         "sub": sub,
         "box_sub_type": boxSubType,
         "aud": "https://api.box.com/oauth2/token",
