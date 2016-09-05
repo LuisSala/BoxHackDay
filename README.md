@@ -51,12 +51,12 @@ This section provides instructions to tear down your environment when you're don
 2\. Create a Cloud9 account by visiting https://c9.io. Once you login, click on "Create a new workspace" as show here:
 ![Cloud9 Create Workspace](/Images/C9-createspace.png)
 
-3\. We will configure your new workspace by cloning a Github repository. Enter the following in the field labeled "Clone from Git or Mercurial URL": https://github.com/LuisSala/BoxHackDay
+3\. We will configure your new workspace by cloning a Github repository. Give your workspace a name (all lowercase) and description. Enter the following in the field labeled "Clone from Git or Mercurial URL": https://github.com/LuisSala/BoxHackDay
 ![Cloud9 Clone Repo](/Images/C9-clonerepo.png)
 
 4\. Select "NodeJS" as a template and click "Create Workspace" to open your newly-cloned workspace.
 
-5\. Once your workspace launches, enter the following to install some additional tools:
+5\. Once your workspace launches, enter the following into the shell panel along the bottom of the screen to install some additional tools. The shell panel will say "bash - "YourWorkSpaceName"):
 ```bash
 curl -L http://bit.ly/bw16install | bash
 ```
@@ -65,7 +65,7 @@ curl -L http://bit.ly/bw16install | bash
 source ~/.profile
 ```
 
-6\. Configure AWS CLI with **aws configure**
+6\. Configure AWS CLI with **"aws configure"**, for the region enter "us-east-1" and for output format use "json" (all lowercase).
 ```
 $ aws configure
 AWS Access Key ID [None]: AKISAMPLEACCESSKEY
@@ -74,16 +74,13 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-7\. Click below to launch your Zombie Stack:
+7\. Click below to launch your Zombie Stack. Be sure to return to this page to continue:
 
 [![Launch Zombie Workshop Stack into Virginia with CloudFormation](/Images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=zombiestack&templateURL=https://s3.amazonaws.com/aws-zombie-workshop-us-east-1/CreateZombieWorkshop.json)
  
+8\. Once you are inside the AWS CloudFormation Console, you should be on a screen titled "Select Template". We are providing CloudFormation with a template on your behalf, so click the blue **Next** button to proceed.
 
-*If you have CloudFormation launch FAILED issues, please try launching in us-east-1 (Virginia)*
-
-8\. Once you have chosen a region and are inside the AWS CloudFormation Console, you should be on a screen titled "Select Template". We are providing CloudFormation with a template on your behalf, so click the blue **Next** button to proceed.
-
-9\. On the following screen, "Specify Details", your Stack is pre-populated with the name "zombiestack". You can customize that to a name of your choice **less than 15 characters in length** or leave as is. For the parameters section, if you want to develop with a team and would like to create IAM Users in your account to grant your teammates access, then specify how many teammates/users you want to be created in the **NumberOfTeammates** text box. Otherwise, leave it defaulted to 0 and no additional users will be created. The user launching the stack (you) already have the necessary permissions. Click **Next**.
+9\. On the following screen, "Specify Details", your Stack is pre-populated with the name "zombiestack". We suggest you keep that name but you can customize that to a name of your choice **less than 15 characters in length** if you want to. Keep in mind that these instructions assume the stack is named "zombiestack". For the parameters section, if you want to develop with a team and would like to create IAM Users in your account to grant your teammates access, then specify how many teammates/users you want to be created in the **NumberOfTeammates** text box. Otherwise, leave it defaulted to 0 and no additional users will be created. The user launching the stack (you) already have the necessary permissions. Click **Next**.
 
 *If you create IAM users, an IAM group will also be created and those users will be added to that group. On deletion of the stack, those resources will be deleted for you.*
 
@@ -147,9 +144,9 @@ Click **Next step**.
 
 * We will not require MFA for this application. However, for during sign up we are requiring verification via email address. This is denoted with the email checkbox selected for "Do you want to require verification of emails or phone numbers?". With this setting, when users sign up for the application, a confirmation code will be sent to their email which they'll be required to input into the application for confirmation.
 
-8\. On the Devices page, leave the default option of "No" selected. We will not configure the User Pool to remember user's devices.
+8\. On the Devices page, leave the default option of "No" selected. We will not configure the User Pool to remember user's devices. So click **Next step**.
 
-9\. On the Apps page, click **Add an app**. In the **App Name** textbox, type "Zombie Survivor Chat App" and **deselect the client secret checkbox**. Click **Set attribute read and write permissions**. You need to give the app "writable" access to the custom attributes you created. Select the **Writable Attributes** checkboxes for the attributes **custom:slackuser, custom:slackteamdomain, and custom:camp** Leave the rest of the defaults and click **Create App**, then click **Next step**.
+9\. On the Apps page, click **Add an app**. In the **App Name** textbox, type "Zombie Survivor Chat App" and **deselect the client secret checkbox**. Click **Set attribute read and write permissions**. You need to give the app "writable" access to the custom attributes you created. Ensure that the **Writable Attributes** checkboxes for the attributes **custom:slackuser, custom:slackteamdomain, and custom:camp** are checked (enabled). Leave the rest of the defaults and click **Create App**, then click **Next step**.
 
 10\. In the dropdowns for the **Pre authentication** and **Post confirmation** triggers, select the Lambda function named "[Your CloudFormation Stack name]-CognitoLambdaTrigger". Click **Next step**.
 
@@ -187,7 +184,7 @@ On the top navigation bar in the management console, switch to **Federated Ident
 
 * When users authenticate into the application, they become an authenticated user, and the application allows them to send chat messages to the survivor chat.
 
-15\. Click the black dropdown arrow in the section titled "Authenticated providers". You will configure your Identity pool to allow federated access from your Identity Provider, your Cognito User Pool. In the "Cognito" identity provider tab, insert your **User Pool ID** and **App Client ID** into their respective text boxes from your text editor file. Do not delete them from the text file, you'll need these items again in a later step.
+15\. Click the black dropdown arrow in the section titled "Authentication providers". You will configure your Identity pool to allow federated access from your Identity Provider, your Cognito User Pool. In the "Cognito" identity provider tab, insert your **User Pool ID** and **App Client ID** into their respective text boxes from your text editor file. Do not delete them from the text file, you'll need these items again in a later step.
 
 You should have copied these from your User Pool earlier when you set it up. If you do not have these copied, please navigate back to your Cognito User Pool you created earlier and locate your User Pool Id and App Client ID.
 
@@ -199,23 +196,47 @@ Scroll to the bottom of the page and click **Save Changes** to save the User Poo
 ```bash
 $ export BUCKET=Enter.Your.Bucket.Name.Here
 ```
+Also export the name of your stack (should be "zombiestack" unless you selected something different) as follows:
+```bash
+$ export STACKNAME=zombiestack
+```
 
 ![C9 IDE](/Images/C9-Step19.png)
 
-**NOTE:** If your stack is named anything other than "zombiestack" then please do the following:
-```bash
-$ export STACKNAME=Enter.Your.Stack.Name.Here
-```
-
-18\. From the Cloud9 IDE, run `$ pull constants` to download the constants.js file into **S3WebApp/assets/js**.
+18\. From the Cloud9 IDE, run `$ pull-constants` to download the constants.js file into **S3WebApp/assets/js**.
 
 19\. Open up the **S3WebApp/assets/js/constants.js** file and copy over the User Pool ID into the "USER_POOL_ID" variable. Then copy the App Client ID into the "CLIENT_ID" variable. These should be copied from the open text file you had open from earlier.
+
+Example: Note that your values will be different:
+```javascript
+var MESSAGES_ENDPOINT = "https://randomid.execute-api.us-east-1.amazonaws.com/ZombieWorkshopStage";
+var COGNITO_REGION = "us-east-1";
+var AWS_REGION = "us-east-1";
+var IDENTITY_POOL_ID = "us-east-1:85guid99a-9bf0-4fff-894d-abguid2";
+var USER_POOL_ID = "us-east-1_TsOmeIDX";
+var CLIENT_ID = "221rAnDomIdGo3sHeredekh4";
+```
 
 * The JS application uses the values in this file to determine the runtime variables necessary to communicate with the different services of the workshop.
 
 * The Identity Pool Id was automatically filled in with several other variables when the CloudFormation template was launched.
 
-20\. Save the constants.js file and upload it back using `$ push-site`
+20\. Save the constants.js file and upload it back using: 
+```bash
+push-site
+```
+Sample output:
+```bash
+user:~/workspace (master) $ push-site
+Pushing Web App Code to S3: zombiestack-s3bucketforwebsitecontent
+upload: S3WebApp/S3/app.js to s3://zombiestack-s3bucketforwebsitecontent/S3/app.js
+upload: S3WebApp/S3/index.html to s3://zombiestack-s3bucketforwebsitecontent/S3/index.html
+upload: S3WebApp/S3/modules/chat/chat.html to s3://zombiestack-s3bucketforwebsitecontent/S3/modules/chat/chat.html
+upload: S3WebApp/S3/modules/chat/chatPanel.html to s3://zombiestack-s3bucketforwebsitecontent/S3/modules/chat/chatPanel.html
+upload: S3WebApp/S3/modules/chat/chat.js to s3://zombiestack-s3bucketforwebsitecontent/S3/modules/chat/chat.js
+upload: S3WebApp/S3/modules/chat/chatPanel.js to s3://zombiestack-s3bucketforwebsitecontent/S3/modules/chat/chatPanel.js
+upload: S3WebApp/S3/assets/js/constants.js to s3://zombiestack-s3bucketforwebsitecontent/S3/assets/js/constants.js
+```
 
 21\. Navigate back to CloudFormation and find the Chat Room URL (MyChatRoomURL) in the Outputs tab of your CloudFormation stack. Click it to open the chat application in a new browser window.
 
@@ -801,24 +822,43 @@ After completing this lab, survivors will be able to upload files into Box and s
 
 1\. [Sign-up for a Box Developer Account](https://app.box.com/signup/o/default_developer_offer). If you already have a Box account, Log in.
 
-2\. [Create Your Application](https://cloud.app.box.com/developers/services/edit/) and generate an [RSA Keypair]( https://docs.box.com/docs/app-auth#section-1-generating-an-rsa-keypair). Copy your whole private key.
+2\. [Create Your Application](https://cloud.app.box.com/developers/services/edit/) on the Box app and be sure enter a value for redirect_uri such as "http://localhost" (not used but required) and to select "Server Authentication (OAuth2.0 with JWT)" in the **Authentication Type** field. 
 
-On Linux / UN*X systems, you might need to generate a password-less keypair thusly:
+**We will need to generate an RSA Keypair as follows:**
+2a\. Generate a private key. You will be prompted for a password, use anything you want, such as "1234".
 ```bash
 $ openssl genrsa -aes256 -out private_key.pem 2048
+```
+Sample Output:
+```bash
 Generating RSA private key, 2048 bit long modulus
 .........+++
 e is 65537 (0x10001)
 Enter pass phrase for private_key.pem:
 Verifying - Enter pass phrase for private_key.pem:
-
+```
+2b\. We don't require the password-protected key, so let's remove that password as follows:
+```bash
 $ openssl rsa -in private_key.pem -out private_key_no_password.pem
+```
+Sample Output:
+```bash
 Enter pass phrase for private_key.pem:
 writing RSA key
-
-$ openssl rsa -pubout -in private_key_no_password.pem -out public_key.pem
-writing RSA key
 ```
+
+2c\. Let's now create a public key using the recently decrypted private key:
+```bash
+$ openssl rsa -pubout -in private_key_no_password.pem -out public_key.pem
+```
+
+2d\. Open your **"public_key.pem"** in the editor and copy the entire contents to your clipboard.
+
+2e\. Follow the instructions in [this page](https://docs.box.com/docs/app-auth#section-2-submitting-the-public-key) to add the key into your app. Begin with Step **"2. Submitting the Public Key"**
+
+2f\. Be sure to copy the "Key ID" to your clipboard/notes file as you'll need this later.
+
+2g\. Click on **"Save Application"**
 
 3\. From the Box "Application Edit" page copy the following into a local text file, you'll need these later:
 - client_secret (OAuth2 Parameters subsection)
@@ -832,9 +872,9 @@ writing RSA key
 
 5a\. Click **"Create a Lambda function"**. 
 
-5b\. Skip past the blueprints page as we will not be using one. Also skip past the triggers page by selecting **"Next"**.
+5b\. Click **Skip** to pass the blueprints page as we will not be using one. Also skip past the triggers page by selecting **"Next"**.
 
-5c\. Give your function the following name: **"[Your CloudFormation Stack name]-uploadFile"**, for example "zombiestack-uploadFile". You can keep the default Node.js 4.3 Runtime. Refer to the following screenshot
+5c\. Give your function the following name: **"[Your CloudFormation Stack name]-uploadFile"**, for this lab, use "zombiestack-uploadFile". You can keep the default Node.js 4.3 Runtime. Refer to the following screenshot:
 
 ![Upload file function](/Images/Box-Step5.png)
 
@@ -851,9 +891,9 @@ writing RSA key
 10\. Repeat steps 5-9 for **sharedLink** function using **"[Your CloudFormation Stack name]-sharedLink"** as the function name on step 5. Your configuration review screen should look like this:
 ![Review](/Images/Box-Step10.png)
 
-11\. Navigate to the [API Gateway service in the AWS Management Console]( )https://console.aws.amazon.com/apigateway/home). Click into your "Zombie Workshop API Gateway" API. On the left Resources pane, click/highlight the "/zombie" resource so that it is selected. Then select the Actions button and choose Create Resource. For Resource Name. Click Create Resource to create your box API resource.
+11\. Navigate to the [API Gateway service in the AWS Management Console](https://console.aws.amazon.com/apigateway/home). Click into your **[stackname]-Zombie Workshop API Gateway API**. On the left Resources pane, click/highlight the "/zombie" resource so that it is selected. Then select the Actions drop-down button and choose **Create Resource**. For Resource Name enter **box** (lowercase Then click **"Create Resource"**
 
-12\. For your newly created "/box" resource, highlight it, then click Actions and select Create Method to create the POST method for the /zombie/box resource. In the dropdown, select POST. Click the checkmark to create the POST method. On the Setup page, choose an Integration Type of Lambda Function, and select the region that you are working in for the region dropdown. For the Lambda Function field, type "uploadFile" for the name of the Lambda Function. It should autofill your function name. Click Save and then OK to confirm.
+12\. For your newly created "/box" resource, click on it, then click Actions and select Create Method to create the POST method for the /zombie/box resource. In the dropdown, select POST. Click the checkmark to create the POST method. On the Setup page, choose an Integration Type of **Lambda Function**, and select the region that you are working in (us-east-1) from the region dropdown. For the Lambda Function field, type "uploadFile" for the name of the Lambda Function. It should auto-complete your function name. Click **Save** and then **OK** to confirm.
 
 ![Upload file function](/Images/Box-Step12.png)
 
@@ -861,7 +901,7 @@ writing RSA key
 
 ![Shared link function](/Images/Box-Step13.png)
 
-14\. Click the **Actions** button on the left side of the API Gateway console and select **Enable CORS**.  Click the ** Enable CORS and replace all the existing CORS headers** button.
+14\. Select the **/box** resource, then click the **Actions** button on the API Gateway console and select **Enable CORS**.  Click the ** Enable CORS and replace all the existing CORS headers** button.
 
 ![Enable CORS](/Images/Box-Step14.png)
 
@@ -869,49 +909,58 @@ writing RSA key
 
 ![Deploy API](/Images/Box-Step15.png)
 
-16\. On the left pane navigation tree, expand the **ZombieWorkshopStage** tree. Click the POST method for the /zombie/box resource.
- 
-17\. Copy the contents of the **Invoke URL** field at the top of the page.
+16\. Copy the contents of the **Invoke URL** field from the top of the page and save it to your notes file.
 
-![Invoke URL for POST method](/Images/Box-Step17.png)
+![Invoke URL](/Images/Box-Step17.png)
 
-18\. Open the **lambda/uploadFile/index.js** and **lambda/postSharedURL/index.js** file from the GitHub repo, found in the box folder.
+17\. On the left pane navigation tree, expand the **ZombieWorkshopStage** tree. Click the POST method for the /zombie/box resource.
+
+18\. Open the **Box/uploadFile/index.js** and **Box/sharedLink/index.js** files found in the **Box** folder.
  
 19\. Update all missing parameters in each of the lambda functions (**sharedLink/index.js** and **uploadFile/index.js**) under the Missing parameters information comment.
+**NOTE: Use contents your unencrypted private key file (e.g. "private_key_no_password.pem") for the "RSA_PRIVATE_KEY" value by opening the file in your text editor and copying the entire contents into your clipboard.
 
 Example for uploadFile/index.js:
 ```javascript
 /* == Missing parameters information == */
-var API_KEY = ''; // Insert application Api Key from Backend Parameters section
-var CLIENT_ID = ''; // Insert application client_id from OAuth2 Parameters section
-var CLIENT_SECRET = ''; // Insert application client_secret from OAuth2 Parameters section
-var PUBLIC_KEY_ID = ''; // Insert application Public Key ID from Public Key Management section
-var ENTERPRISE_ID = ''; // Insert Enterprise ID from Account Information section in Admin console under the business settings
-var RSA_PRIVATE_KEY = ``;  // Insert your generated private key including  -----BEGIN RSA PRIVATE KEY----- and -----END RSA PRIVATE KEY-----
+var API_KEY = 'asdf567'; // Insert application Api Key from Backend Parameters section
+var CLIENT_ID = 'qwerty098'; // Insert application client_id from OAuth2 Parameters section
+var CLIENT_SECRET = 'def4322'; // Insert application client_secret from OAuth2 Parameters section
+var PUBLIC_KEY_ID = 'abcd123'; // Insert application Public Key ID from Public Key Management section
+var ENTERPRISE_ID = '12345'; // Insert Enterprise ID from Account Information section in Admin console under the business settings
+var RSA_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAuC8S0fbvOyjl2CYEBuABPI3Ucx372C9dpbkdmNbKiZGfOhha
+[...]
+mrfLPmEu/7Ub0tPhnkPa/h7Q5JICozUcME/ByCao2I9PGibmhPRB7Fw=
+-----END RSA PRIVATE KEY-----
+`; // Insert your generated private key including  -----BEGIN RSA PRIVATE KEY----- and -----END RSA PRIVATE KEY-----
 ```
 
 Example for sharedLink/index.js:
 ```javascript
 /* == Missing parameters information == */
 var API = {
-    region: '', //'Insert your region where you launched the stack
-    endpoint: '' //'Inser your API Gateway invoke url including https. Something like ... https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com
+    region: 'us-east-1', //'Insert your region where you launched the stack
+    endpoint: 'https://xxxxxxx.execute-api.us-east-1.amazonaws.com/ZombieWorkshopStage' //'Inser your API Gateway invoke url including https. Something like ... https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com
 };
 
-var API_KEY = ''; // Insert application Api Key from Backend Parameters section
-var CLIENT_ID = ''; // Insert application client_id from OAuth2 Parameters section
-var CLIENT_SECRET = ''; // Insert application client_secret from OAuth2 Parameters section
-var PUBLIC_KEY_ID = ''; // Insert application Public Key ID from Public Key Management section
-var RSA_PRIVATE_KEY = ``;  // Insert your generated private key including  -----BEGIN RSA PRIVATE KEY----- and -----END RSA PRIVATE KEY-----
-
+var API_KEY = 'asdf567'; // Insert application Api Key from Backend Parameters section
+var CLIENT_ID = 'qwerty098'; // Insert application client_id from OAuth2 Parameters section
+var CLIENT_SECRET = 'def4322'; // Insert application client_secret from OAuth2 Parameters section
+var PUBLIC_KEY_ID = 'abcd123'; // Insert application Public Key ID from Public Key Management section
+var RSA_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAuC8S0fbvOyjl2CYEBuABPI3Ucx372C9dpbkdmNbKiZGfOhha
+[...]
+mrfLPmEu/7Ub0tPhnkPa/h7Q5JICozUcME/ByCao2I9PGibmhPRB7Fw=
+-----END RSA PRIVATE KEY-----
 ```
  
-20\. Deploy your code from Cloud9:
+20\. Save all your open files (**sharedLink/index.js** and **uploadFile/index.js**) and deploy your code directly from Cloud9:
 ```bash
 $ push-box-lambda
 ```
 
-21\. Test by uploading a file via "Upload File" button in the chat app. 
+21\. Test by logging out of the chat app, refreshing the page, logging back in, then uploading a file via "Upload File" button in the chat app. You should see a link to your newly uploaded file on the chat screen.
  
 **LAB 6 COMPLETE**
 
