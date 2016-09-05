@@ -1,0 +1,416 @@
+
+body{
+    width:100%;
+    height:100%;
+    position:static;
+    background-repeat: no-repeat;
+      background: black;
+    font-family: 'Roboto', sans-serif;
+    color:gray;
+    /*min-width:895px;*/
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  background: black;
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #f1f2f7;
+  font-family: 'Roboto', sans-serif;
+  margin: 10px 0;
+  font-weight: 300;
+}
+h1 {
+  line-height: 48px;
+  font-size: 36px;
+}
+h2 {
+  line-height: 36px;
+  font-size: 24px;
+}
+h3 {
+  line-height: 30px;
+  font-size: 21px;
+}
+h4 {
+  line-height: 22px;
+  font-size: 18px;
+}
+h5 {
+  font-size: 18px;
+  font-size: 16px;
+}
+h5 {
+  font-size: 16px;
+  font-size: 14px;
+}
+blockquote {
+  border-left: 5px solid #13dafe !important;
+  border: 1px solid rgba(120, 130, 140, 0.13);
+}
+p {
+  line-height: 1.6;
+}
+b {
+  font-weight: 600;
+}
+a:hover {
+  outline: 0;
+  text-decoration: none;
+}
+a:active {
+  outline: 0;
+  text-decoration: none;
+}
+a:focus {
+  outline: 0;
+  text-decoration: none;
+}
+.clear {
+  clear: both;
+}
+.font-12 {
+  font-size: 12px;
+}
+hr {
+  border-color: rgba(120, 130, 140, 0.13);
+}
+.b-t {
+  border-top: 1px solid rgba(120, 130, 140, 0.13);
+}
+.b-b {
+  border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+}
+.b-l {
+  border-left: 1px solid rgba(120, 130, 140, 0.13);
+}
+.b-r {
+  border-right: 1px solid rgba(120, 130, 140, 0.13);
+}
+.b-all {
+  border: 1px solid rgba(120, 130, 140, 0.13);
+}
+.b-none {
+  border: 0px!important;
+}
+.max-height {
+  height: 310px;
+  overflow: auto;
+}
+.p-0 {
+  padding: 0px !important;
+}
+.p-10 {
+  padding: 10px !important;
+}
+.p-20 {
+  padding: 20px !important;
+}
+.p-30 {
+  padding: 30px !important;
+}
+.p-l-0 {
+  padding-left: 0px !important;
+}
+.p-l-10 {
+  padding-left: 10px !important;
+}
+.p-l-20 {
+  padding-left: 20px !important;
+}
+.p-r-0 {
+  padding-right: 0px !important;
+}
+.p-r-10 {
+  padding-right: 10px !important;
+}
+.p-r-20 {
+  padding-right: 20px !important;
+}
+.p-t-0 {
+  padding-top: 0px !important;
+}
+.p-t-10 {
+  padding-top: 10px !important;
+}
+.p-t-20 {
+  padding-top: 20px !important;
+}
+.p-b-0 {
+  padding-bottom: 0px !important;
+}
+.p-b-10 {
+  padding-bottom: 10px !important;
+}
+.p-b-20 {
+  padding-bottom: 20px !important;
+}
+.m-0 {
+  margin: 0px !important;
+}
+.m-l-5 {
+  margin-left: 5px !important;
+}
+.m-l-10 {
+  margin-left: 10px !important;
+}
+.m-l-15 {
+  margin-left: 15px !important;
+}
+.m-l-20 {
+  margin-left: 20px !important;
+}
+.m-l-30 {
+  margin-left: 30px !important;
+}
+.m-l-40 {
+  margin-left: 40px !important;
+}
+.m-r-5 {
+  margin-right: 5px !important;
+}
+.m-r-10 {
+  margin-right: 10px !important;
+}
+.m-r-15 {
+  margin-right: 15px !important;
+}
+.m-r-20 {
+  margin-right: 20px !important;
+}
+.m-r-30 {
+  margin-right: 30px !important;
+}
+.m-r-40 {
+  margin-right: 40px !important;
+}
+.m-t-5 {
+  margin-top: 5px !important;
+}
+.m-t-0 {
+  margin-top: 0px !important;
+}
+.m-t-10 {
+  margin-top: 10px !important;
+}
+.m-t-15 {
+  margin-top: 15px !important;
+}
+.m-t-20 {
+  margin-top: 20px !important;
+}
+.m-t-30 {
+  margin-top: 30px !important;
+}
+.m-t-40 {
+  margin-top: 40px !important;
+}
+.m-b-0 {
+  margin-bottom: 0px !important;
+}
+.m-b-5 {
+  margin-bottom: 5px !important;
+}
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+.m-b-15 {
+  margin-bottom: 15px !important;
+}
+.m-b-20 {
+  margin-bottom: 20px !important;
+}
+.m-b-30 {
+  margin-bottom: 30px !important;
+}
+.m-b-40 {
+  margin-bottom: 40px !important;
+}
+
+#square {
+    position:absolute;
+    z-index:-1;
+    width:100%;
+    background-color:black;
+    height:80px;
+}
+
+#zombie-logo {
+    float:left;
+    padding-top:4px;
+}
+
+#main-header {
+    text-align:left;
+    color:black;
+    font-size: 2.6em;
+    padding-top:12px;
+    display:inline;
+    width:60%;
+    float:left;
+}
+
+#logo {
+    padding-top:15px;
+    padding-right:10%;
+    float:right;
+}
+
+#wrapper {
+    padding-left: 3em;
+    padding-right:3em;
+}
+
+#chat-toggle{
+    border:none;
+    background-color:rgb(102,0,0);
+    color:white;
+    display:inline;
+}
+
+
+#chat-body {
+    overflow-y: scroll;
+    height:400px;
+    background-color:#2a2a2a;
+    border-style:solid;
+    border-width: 1px;
+    border-color:#414141;
+
+}
+
+#talkers-body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#name-input {
+    background-color:#2a2a2a;
+    border-style:solid;
+    border-width: 1px;
+    border-color:#414141;
+}
+
+p {display:inline;}
+
+#username {
+    float:none;
+    clear:both;
+    padding-top:3em;
+    padding-left:1em;
+    padding-right:1em;
+    padding-bottom:1.5em;
+}
+
+/*.form-group { padding: 1em;}*/
+
+.panel-footer {
+    background-color:transparent;
+}
+
+#chat-message-input {
+    background-color:#2a2a2a;
+    border-style:solid;
+    border-width: 1px;
+    border-color:#414141;
+}
+
+#chat-message-input::-webkit-input-placeholder {
+    font-style:italic;
+}
+
+::-webkit-scrollbar {
+  background-color:#2a2a2a;
+}
+
+#name-input::-webkit-input-placeholder {
+    font-style:italic;
+}
+
+.mainLoginInput:-moz-placeholder {
+     font-style:italic;
+}
+
+input::-webkit-input-placeholder {
+  background-color:#272727;
+}
+
+/* signin and signup */
+#wrapper {
+    width: 100%;
+    height:100%;
+}
+
+.login-register {
+    background: transparent url("../images/signalcorps.png") no-repeat scroll;
+    /* transparent url("../images/zombie-login.jpg") no-repeat scroll center center / cover !important; */
+    height: 100%;
+    float: left;
+}
+
+.login-signin {
+    background: transparent url("../images/signalcorps.png") no-repeat scroll;
+    /* background: transparent url("../images/title.png") no-repeat scroll; */
+    height: 100%;
+    float: left;
+}
+
+.login-box {
+    height: 100%;
+    background: black none repeat scroll 0% 0%;
+    float: right;
+    width: 420px;
+}
+
+.white-box {
+    background: black none repeat scroll 0% 0%;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.white-box h3 {
+    margin: 0px 0px 12px;
+    font-weight: 500;
+}
+
+.login-box .footer {
+    width: 100%;
+    left: 0px;
+    right: 0px;
+}
+.footer {
+    background: black none repeat scroll 0% 0%;
+    color: #58666E;
+    left: 0px;
+    padding: 20px 30px;
+    position: absolute;
+    right: 0px;
+}
+
+.form-control {
+  background-color: #272727;
+  height: 38px;
+  max-width: 100%;
+  padding: 7px 12px;
+  color: #f1f2f7;
+  transition: all 300ms linear 0s;
+}
+
+.help-block {
+    margin-bottom: 0px;
+}
+
+/*Phone*/
+@media (max-width: 767px) {
+    .login-box {
+        max-width: 420px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "zombieSensor",
+  "description": "Intel Edison device code to publish messages to SNS upon detection of motion",
+  "version": "0.0.1",
+  "main": "main.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "mraa": "",
+    "aws-sdk": ""
+  }
+}

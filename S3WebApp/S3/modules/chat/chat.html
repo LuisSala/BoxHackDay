@@ -1,0 +1,36 @@
+<header class="clearfix" style="background-color:#000;">
+    <div id="square"></div>
+    <img id="zombie-logo" src="assets/images/zombie-logo.png" /img style="padding-left:3em; padding-right:1em;">
+    <div id="main-header"><img src="assets/images/title.png"></div>
+    <img id="logo" src="assets/images/aws-logo.png" /img>
+</header>
+<section id="wrapper" style="min-height:700px;">
+    <!-- ***********************************************************
+	   Panel and control (usernameSectionCtrl) for entering in username/logging in.
+     ***********************************************************  -->
+
+    <div id="username">
+        <div id="screenNameDiv">
+            <p>
+                <img src="assets/images/username.png" /img>
+                <span style="font-size:18px;">{{chatuser.name}}</span>
+            </p>
+            <p>
+                <input ng-click="toggleChatting()" id="chat-toggle" type="button" value="{{chatState}}" style="margin-left:10px; vertical-align: middle;" />
+            </p>
+            <button class='btn btn-sm btn-danger pull-right' ng-click="signout()" style="margin-left:10px;">Sign Out</button>
+            <!--  Box -->
+            <label class='btn btn-sm btn-danger pull-right'>
+                Upload File
+                <input type="file" onchange="angular.element(this).scope().uploadFile(this);" style="display: none;">
+            </label>
+        </div>
+    </div>
+
+    <div class="panel-info-chatbox">
+        <div ui-view="chatPanel"></div>
+        <div ui-view="talkersPanel"></div>
+        <div ui-view="chatMessages"></div>
+    </div>
+
+</section>

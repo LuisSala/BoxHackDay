@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Zombie Chat Application</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/zombie.css"type="text/css" charset="utf-8" />
+
+    </head>
+
+    <body ng-app="chatApp">
+        <header>
+            <div id="square"></div>
+            <img id="zombie-logo" src="assets/images/zombie-logo.png"/img style="padding-left:3em; padding-right:1em;">
+            <div id="main-header"><img src="assets/images/title.png"></div>
+            <img id="logo" src="assets/images/aws-logo.png"/img>
+        </header>
+
+
+
+<div id="wrapper">
+
+<!-- ***********************************************************
+
+	Panel and control (usernameSectionCtrl) for entering in username/logging in.
+
+     ***********************************************************  -->
+
+    <div ng-controller="usernameSectionCtrl" id="username">
+        <div id="screenNameDiv">
+              <p>
+                  <img src="assets/images/username.png"/img>
+                  <input ng-disabled="chatting" id="name-input" type="text" placeholder="Enter user name">
+              </p>
+              <p>
+                   <input ng-click="toggleChatting()" id="chat-toggle"
+                          type="button" value="Start Chatting"/>
+              </p>
+        </div>
+    </div>
+
+    <div class="panel-info-chatbox">
+
+      <!-- ***********************************************************
+
+      Panel and control (chatPanelCtrl) for displaying the chat messages.
+
+     ***********************************************************  -->
+
+        <div ng-controller="chatPanelCtrl" class="panel-body">
+            <div id="chat-body">
+              <div id="message-items" data-ng-repeat="message in messages">
+                {{ message.name }} {{message.timestamp | date:'yyyy-MM-dd HH:mm:ss Z'}} - {{message.message}}<br/>
+              </div>
+            </div>
+          </div>
+
+      <!-- ***********************************************************
+
+      Panel and control (talkersPanelCtrl) for displaying the chat messages.
+
+     ***********************************************************  -->
+
+        <div ng-controller="talkersPanelCtrl" class="panel-body">
+            <div id="talkers-body">
+              Users Typing:<br/>
+              <div id="talkers-items" data-ng-repeat="talker in talkers">
+                {{ talker }}<br/>
+              </div>
+            </div>
+          </div>
+
+    <!-- ***********************************************************
+
+      Panel and control (chatMessageCtrl) for displaying the chat messages.
+
+     ***********************************************************  -->
+        <div ng-controller="chatMessageCtrl" class="form">
+              <div class="form-group">
+                <input type="text" ng-keypress="chatMessageKeyPressed($event)" ng-model="chatMessage" ng-disabled="!chatting || posting" class="form-control" id="chat-message-input"
+                placeholder="Save your brains, enter your user name">
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+
+    <!-- This is the file that contains the API gateway endpoint... -->
+    <script src="assets/js/constants.js"></script>
+
+    <!-- Angularjs app and controllers -->
+    <script src="app/app.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/chatMessageController.js"></script>
+    <script src="app/controllers/chatPanelController.js"></script>
+    <script src="app/controllers/talkersPanelController.js"></script>
+
+</body>
+</html>

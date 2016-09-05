@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Zombie Chat Application</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/zombie.css"type="text/css" charset="utf-8" />
+    </head>
+
+    <body>
+
+        <div ng-app="chatApp">
+            <ui-view></ui-view>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+
+        <script src="assets/js/jsbn.js"></script>
+        <script src="assets/js/jsbn2.js"></script>
+        <script src="assets/js/sjcl.js"></script>
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/aws-cognito-sdk.min.js"></script>
+        <script src="assets/js/amazon-cognito-identity.min.js"></script>
+        <script src="assets/js/aws-sdk.min.js"></script>
+        <script src="assets/js/underscore.min.js"></script>
+
+
+        <!-- Needed for APIG Client and sigV4Client for generated SDK -->
+        <script src="lib/axios/dist/axios.standalone.js"></script>
+        <script src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script src="lib/CryptoJS/rollups/sha256.js"></script>
+        <script src="lib/CryptoJS/components/hmac.js"></script>
+        <script src="lib/CryptoJS/components/enc-base64.js"></script>
+        <script src="lib/url-template/url-template.js"></script>
+        <script src="lib/apiGatewayCore/sigV4Client.js"></script>
+        <script src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script src="lib/apiGatewayCore/utils.js"></script>
+        <!-- This is the file that contains the API gateway endpoint... -->
+        <script src="assets/js/constants.js"></script>
+
+        <!-- Angularjs app and controllers -->
+        <script src="app.js"></script>
+        <script src="factories/utils.js"></script>
+        <script src="modules/signin/signin.js"></script>
+        <script src="modules/signup/signup.js"></script>
+        <script src="modules/confirm/confirm.js"></script>
+        <script src="modules/chat/chat.js"></script>
+        <script src="modules/chat/chatPanel.js"></script>
+        <script src="modules/chat/talkersPanel.js"></script>
+        <script src="modules/chat/chatMessages.js"></script>
+        <!-- <script src="app/controllers/loginController.js"></script>
+        <script src="app/controllers/chatMessageController.js"></script>
+        <script src="app/controllers/chatPanelController.js"></script>
+        <script src="app/controllers/talkersPanelController.js"></script> -->
+    </body>
+</html>

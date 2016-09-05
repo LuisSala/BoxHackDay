@@ -1,0 +1,1 @@
+var MESSAGES_ENDPOINT = "";

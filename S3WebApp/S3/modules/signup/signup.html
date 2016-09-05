@@ -1,0 +1,108 @@
+<header class="clearfix">
+    <div id="square"></div>
+    <div id="main-header"><img src="assets/images/title.png"></div>
+    <img id="logo" src="assets/images/aws-logo.png"/img>
+</header>
+<section id="wrapper" class="login-register">
+    <div class="login-box">
+        <div class="white-box">
+            <form name="signupForm" class="form-horizontal m-t-20" novalidate ng-submit="register(signupForm.$valid)">
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <h3>Sign Up</h3>
+                        <p class="text-muted">Survive the apocalypse together!</p>
+                        <p class="text-muted">Create a user account and communicate with other survivors on your team!</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="errormessage">
+                    <div class="col-xs-12 has-error">
+                        <p class="help-block">{{errormessage}}</p>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signupForm.name.$touched && signupForm.name.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="name" class="form-control" ng-model="user.name" required placeholder="Name" type="text">
+                        <div class="help-block" ng-messages="signupForm.name.$error" ng-if="signupForm.name.$touched">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signupForm.email.$touched && signupForm.email.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="email" class="form-control" ng-model="user.email" required placeholder="Email" type="email">
+                        <div class="help-block" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$touched">
+                            <p ng-message="required">This field is required</p>
+                            <p ng-message="email">This needs to be a valid email</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signupForm.phone.$touched && signupForm.phone.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="phone" class="form-control" ng-model="user.phone" required placeholder="Mobile Phone" type="text" ng-pattern="/^[1-9][0-9]{9}$/">
+                        <div class="help-block" ng-messages="signupForm.phone.$error" ng-if="signupForm.phone.$touched">
+                            <p ng-message="required">This field is required</p>
+                            <p ng-message="pattern">Digits only please. Must be a valid 10 digit phone number</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signupForm.password.$touched && signupForm.password.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="password" class="form-control" ng-model="user.password" required placeholder="Password" type="password" ng-pattern="/^(?=.*\d)(?=.*[\^\$\*\.\[\]\{\}\(\)\?\-\“\!\@\#\%\/\,\>\<\‘\:\;\|\_\~\`]).{8,99}$/">
+                        <div class="help-block" ng-messages="signupForm.password.$error" ng-if="signupForm.password.$touched">
+
+                            <p ng-message="required">This field is required</p>
+                            <p ng-message="pattern">Password must be at least 8 characters, and must include at least 1 upper case letter, 1 lower case letter, 1 numeric digit, and at least 1 special character.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signupForm.confirmPassword.$touched && signupForm.confirmPassword.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="confirmPassword" class="form-control" ng-model="user.confirmPassword" required placeholder="Confirm Password" type="password" compare-to="user.password">
+                        <div class="help-block" ng-messages="signupForm.confirmPassword.$error" ng-if="signupForm.confirmPassword.$touched">
+                            <p ng-message="required">This field is required</p>
+                            <p ng-message="compareTo">Must match the previous entry</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12">Select a camp</label>
+                    <div class="col-xs-12">
+                        <select class="form-control" ng-model="user.camp">
+                            <option value="NA">North America</option>
+                            <option value="SA">South and Central America</option>
+                            <option value="EU">Europe</option>
+                            <option value="APAC">APAC</option>
+                            <option value="AF">Africa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input name="slackuser" class="form-control" ng-model="user.slackuser" placeholder="Slack Username" type="text">
+                        <div class="help-block">
+                            <p>Needed for Slack Lab: Please insert your Slack Username if you plan to integrate Slack into the survivor chat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input name="slackteamdomain" class="form-control" ng-model="user.slackteamdomain" placeholder="Slack Team Domain Name" type="text">
+                        <div class="help-block">
+                            <p>Needed for Slack Lab: Please insert your the team name associated with your Slack user name</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" ng-disabled="signupForm.$invalid">Sign Up</button>
+                    </div>
+                </div>
+                <div class="form-group m-t-30 m-b-0">
+                    <div class="col-sm-12 text-center">
+                        <p>Have an account already? Please go to<a href="#/signin" class="text-primary m-l-5"><b>Sign In</b></a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

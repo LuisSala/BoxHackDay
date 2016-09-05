@@ -1,0 +1,55 @@
+<header class="clearfix">
+    <div id="square"></div>
+    <div id="main-header"><img src="assets/images/title.png"></div>
+    <img id="logo" src="assets/images/aws-logo.png"/img>
+</header>
+<section id="wrapper" class="login-signin">
+    <div class="login-box">
+        <div class="white-box">
+            <form name="signinForm" class="form-horizontal m-t-20" novalidate ng-submit="signin(signinForm.$valid)">
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <h3>Sign In</h3>
+                        <p class="text-muted">Sign in to chat with your Zombie Apocalypse camp.</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="errormessage">
+                    <div class="col-xs-12 has-error">
+                        <p class="help-block">{{errormessage}}</p>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signinForm.email.$touched && signinForm.email.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="email" class="form-control" ng-model="user.email" required placeholder="Email" type="email">
+                        <div class="help-block" ng-messages="signinForm.email.$error" ng-if="signinForm.email.$touched">
+                            <p ng-message="required">This field is required</p>
+                            <p ng-message="email">This needs to be a valid email</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group " ng-class="{ 'has-error': signinForm.password.$touched && signinForm.password.$invalid }">
+                    <div class="col-xs-12">
+                        <input name="password" class="form-control" ng-model="user.password" required placeholder="Password" type="password">
+                        <div class="help-block" ng-messages="signinForm.password.$error" ng-if="signinForm.password.$touched">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" ng-disabled="signinForm.$invalid">Sign In</button>
+                    </div>
+                </div>
+                <div class="form-group m-t-30 m-b-0">
+                    <div class="col-sm-12 text-center">
+                        <p>Don't have an account?
+                            <a href="#/signup" class="text-primary m-l-5">
+                                <b>Sign Up</b>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
