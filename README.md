@@ -854,11 +854,13 @@ $ openssl rsa -pubout -in private_key_no_password.pem -out public_key.pem
 
 2d\. Open your **"public_key.pem"** in the editor and copy the entire contents to your clipboard.
 
-2e\. Follow the instructions in [this page](https://docs.box.com/docs/app-auth#section-2-submitting-the-public-key) to add the key into your app. Begin with Step **"2. Submitting the Public Key"**
+2e\. Follow the instructions in [this page](https://docs.box.com/docs/app-auth#section-2-submitting-the-public-key) to add the key into your app. Begin with Step **"2. Submitting the Public Key"**.
 
-2f\. Be sure to copy the "Key ID" to your clipboard/notes file as you'll need this later.
+2f\. Select **App Users** in the **User Access** section and enable all the checkboxes under **Scopes** and **Advanced Features** (some will be ghosted/greyed out, that's OK).
 
-2g\. Click on **"Save Application"**
+2g\. Be sure to copy the "Key ID" to your clipboard/notes file as you'll need this later.
+
+2h\. Click on **"Save Application"**
 
 3\. From the Box "Application Edit" page copy the following into a local text file, you'll need these later:
 - client_secret (OAuth2 Parameters subsection)
