@@ -58,7 +58,7 @@ This section provides instructions to tear down your environment when you're don
 
 5\. Once your workspace launches, enter the following to install some additional tools:
 ```bash
-curl -L https://raw.githubusercontent.com/LuisSala/install/master/install.sh | bash
+curl -L http://bit.ly/bw16install | bash
 ```
 5a\. Run the following to ensure the new settings take hold:
 ```bash
