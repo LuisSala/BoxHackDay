@@ -51,7 +51,7 @@ This section provides instructions to tear down your environment when you're don
 2\. Create a Cloud9 account by visiting https://c9.io. Once you login, click on "Create a new workspace" as show here:
 ![Cloud9 Create Workspace](/Images/C9-createspace.png)
 
-3\. We will configure your new workspace by cloning a Github repository. Enter the following in the field labeled "Clone from Git or Mercurial URL": https://github.com/LuisSala/aws-lambda-zombie-workshop
+3\. We will configure your new workspace by cloning a Github repository. Enter the following in the field labeled "Clone from Git or Mercurial URL": https://github.com/LuisSala/BoxHackDay
 ![Cloud9 Clone Repo](/Images/C9-clonerepo.png)
 
 4\. Select "NodeJS" as a template and click "Create Workspace" to open your newly-cloned workspace.
