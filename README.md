@@ -870,6 +870,8 @@ $ openssl rsa -pubout -in private_key_no_password.pem -out public_key.pem
 
 4\. Go to the [Account Information section in Admin console](https://app.box.com/master/settings) and copy down the value of the "Enterprise ID" field.
 
+4a\. While your're in the Admin Console, visit the [Apps tab](https://app.box.com/master/settings/openbox), scroll down to the **"Custom Applications"** section then click on **"Authorize New App"**. You will need to paste in the API Key you captured in Step 3 above.
+
 5\. You'll now create two Lambda functions. One for uploading a file and second for generating and posting a shared link. Begin by opening the [Lambda page](https://console.aws.amazon.com/lambda/home) in the AWS Management Console.
 
 5a\. Click **"Create a Lambda function"**. 
